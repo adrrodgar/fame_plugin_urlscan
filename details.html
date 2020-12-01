@@ -1,0 +1,37 @@
+<div class="col-md-12">
+    <div class="card">
+        <div class="header">
+            <h4 class="title">URLScan Report</h4>
+            <p class="category">Detailed Results</p>
+        </div>
+        <div class="content">
+          <div>
+            <label>Verdict</label>
+            {% if 'status' in results %}
+                {% if results['status'] == 'Succesfully' %}
+                    <label>URL Information</label>
+                    <div class="labeled_content">
+                        Domain: {{results['domain']}} </br>
+                        Country: {{results['country']}} </br>
+                        Server: {{results['server']}} </br>
+                        IP: {{results['ip']}} </br>
+                    </div>
+                    </br>
+                    <label>URLScan Score</label>
+                    <div class="labeled_content">
+                        Score: {{results['verdict']['score']}} </br>
+                        Malicious: {{results['verdict']['malicious']}} </br>
+                    </div>
+                    </br>
+                    <label>Permalink</label>
+                    <div class="labeled_content">
+                        <a href={{ results['permalink'] }} target=_blank>{{ results['permalink'] }}</a>
+                    </div>
+                {% else %}
+                    <h2 style="margin: 0 0 15px; 0"><span class="label label-info">{{results['status']}}</span></h2>
+                {% endif %}
+            {% endif %}
+          </div>
+        </div>
+    </div>
+</div>
